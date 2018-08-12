@@ -15,23 +15,23 @@ namespace BloomFilter
 
 		public BloomFilter(string word)
 		{
-			SetValuesInBloomFilter(word);
+			SetValueInBloomFilter(word);
 		}
 
-		private int CalculateHash(string input)
+		public int CalculateHash(string input)
 		{
-			//math absolute always returns positive number
+			//Math.Absolute always returns positive number
 			//I used modulus to keep the range low (otherwise it was returning ints > 1billion)
 			return Math.Abs(input.GetHashCode()) % bloomSize;
 		}
 
-		public void SetValuesInBloomFilter(string word)
+		public void SetValueInBloomFilter(string word)
 		{
 			var hash = CalculateHash(word);
 			bitArray[hash] = true;
 		}
 
-		public bool CheckBloomFilter(string word)
+		public bool SearchValueInBloomFilter(string word)
 		{
 			var hash = CalculateHash(word);
 

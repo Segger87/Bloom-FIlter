@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
-using System.Text;
-
 
 namespace BloomFilter
 {
@@ -11,32 +6,54 @@ namespace BloomFilter
 	{
 		static void Main(string[] args)
 		{
-			var program = new Program();
+			new Program().ExecuteBloomFilter();
+		}
+
+		private void ExecuteBloomFilter()
+		{
+			Console.WriteLine("Downloading Words...");
 			var listOfWords = new DownloadWords();
-			var test = new BloomFilter();
+			var bloomFilter = new BloomFilter();
+			Console.WriteLine("Searching Words...");
 
 			foreach (var word in listOfWords.Words)
-			{ 
-				test.SetValuesInBloomFilter(word);
+			{
+				bloomFilter.SetValueInBloomFilter(word);
 			}
 
-			var result1 = test.CheckBloomFilter("Abderian's");
-			var result2 = test.CheckBloomFilter("telangiectasias");
-			var result3 = test.CheckBloomFilter("événements");
-			var result4 = test.CheckBloomFilter("maw's");
-			var result5 = test.CheckBloomFilter("BeastModeBarry");
-			var result6 = test.CheckBloomFilter("2");
-			var result7 = test.CheckBloomFilter("2582430957hfdjskfbsdkfbsjkdbf");
-
-			Console.WriteLine(result1);
-			Console.WriteLine(result2);
-			Console.WriteLine(result3);
-			Console.WriteLine(result4);
-			Console.WriteLine(result5);
-			Console.WriteLine(result6);
-			Console.WriteLine(result7);
-			Console.WriteLine();
+			RandomSearchesExpectedToBeFalse(bloomFilter);
+			RandomSearchesExpectedToBeTrue(bloomFilter);
 			Console.ReadLine();
+		}
+
+		private void RandomSearchesExpectedToBeFalse(BloomFilter bloomFilter)
+		{
+			string expectedToBeFalse = "BeastModeBarry";
+			string expectedToBeFalse2 = "2";
+			string expectedToBeFalse3 = "socagers1";
+
+			var result1 = bloomFilter.SearchValueInBloomFilter(expectedToBeFalse);
+			var result2 = bloomFilter.SearchValueInBloomFilter(expectedToBeFalse2);
+			var result3 = bloomFilter.SearchValueInBloomFilter(expectedToBeFalse3);
+
+			Console.WriteLine($"The Word {expectedToBeFalse} which is expected to be false returns {result1}");
+			Console.WriteLine($"The Word {expectedToBeFalse2} which is expected to be false returns {result2}");
+			Console.WriteLine($"The Word {expectedToBeFalse3} which is expected to be false returns {result3}");
+		}
+
+		private void RandomSearchesExpectedToBeTrue(BloomFilter bloomFilter)
+		{
+			string expectedToBeTrue = "ADP's";
+			string expectedToBeTrue2 = "jambokking";
+			string expectedToBeTrue3 = "socagers";
+
+			var result1 = bloomFilter.SearchValueInBloomFilter(expectedToBeTrue);
+			var result2 = bloomFilter.SearchValueInBloomFilter(expectedToBeTrue2);
+			var result3 = bloomFilter.SearchValueInBloomFilter(expectedToBeTrue3);
+
+			Console.WriteLine($"The Word {expectedToBeTrue} which is expected to be True returns {result1}");
+			Console.WriteLine($"The Word {expectedToBeTrue2} which is expected to be false returns {result2}");
+			Console.WriteLine($"The Word {expectedToBeTrue3} which is expected to be false returns {result3}");
 		}
 	}
 }
