@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BloomFilter
 {
 	public class BloomFilter
 	{
-		public BitArray bitArray = new BitArray(1000, false); 
+		private const int bloomSize = 1234567;
+		public BitArray bitArray = new BitArray(bloomSize, false); 
 
 		public BloomFilter()
 		{
@@ -19,46 +15,29 @@ namespace BloomFilter
 
 		public BloomFilter(string word)
 		{
-			var hash = CalculateMD5Hash(word);
-			SetValuesInBloomFilter(bitArray, hash);
+			SetValuesInBloomFilter(word);
 		}
 
-		private int[] CalculateMD5Hash(string input)
+		private int CalculateHash(string input)
 		{
-			MD5 md5 = MD5.Create();
-			byte[] inputBytes = Encoding.ASCII.GetBytes(input);
-			byte[] hash = md5.ComputeHash(inputBytes);
-			int[] hashInts = new int[5];
-
-			for (int i = 0; i < 5; i++)
-			{
-				var hashInt = Convert.ToInt16(hash[i]);
-				hashInts[i] = hashInt;
-			}
-
-			return hashInts;
+			//math absolute always returns positive number
+			//I used modulus to keep the range low (otherwise it was returning ints > 1billion)
+			return Math.Abs(input.GetHashCode()) % bloomSize;
 		}
 
-		private BitArray SetValuesInBloomFilter(BitArray bitArray, int[] input)
+		public void SetValuesInBloomFilter(string word)
 		{
-			foreach (var item in input)
-			{
-				bitArray[item] = true;
-			}
-
-			return bitArray;
+			var hash = CalculateHash(word);
+			bitArray[hash] = true;
 		}
 
 		public bool CheckBloomFilter(string word)
 		{
-			var hash = CalculateMD5Hash(word);
+			var hash = CalculateHash(word);
 
-			foreach (var i in hash)
+			if (bitArray[hash] != true)
 			{
-				if (!bitArray[i])
-				{
-					return false;
-				}
+				return false;
 			}
 			return true;
 		}
