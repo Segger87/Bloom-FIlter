@@ -36,9 +36,9 @@ namespace BloomFilter
 			var result2 = bloomFilter.SearchValueInBloomFilter(expectedToBeFalse2);
 			var result3 = bloomFilter.SearchValueInBloomFilter(expectedToBeFalse3);
 
-			Console.WriteLine($"The Word {expectedToBeFalse} which is expected to be false returns {result1}");
-			Console.WriteLine($"The Word {expectedToBeFalse2} which is expected to be false returns {result2}");
-			Console.WriteLine($"The Word {expectedToBeFalse3} which is expected to be false returns {result3}");
+			Console.WriteLine($"The Word {expectedToBeFalse} which is expected to be False returns {result1}");
+			Console.WriteLine($"The Word {expectedToBeFalse2} which is expected to be False returns {result2}");
+			Console.WriteLine($"The Word {expectedToBeFalse3} which is expected to be False returns {result3}");
 		}
 
 		private void RandomSearchesExpectedToBeTrue(BloomFilter bloomFilter)
@@ -52,8 +52,8 @@ namespace BloomFilter
 			var result3 = bloomFilter.SearchValueInBloomFilter(expectedToBeTrue3);
 
 			Console.WriteLine($"The Word {expectedToBeTrue} which is expected to be True returns {result1}");
-			Console.WriteLine($"The Word {expectedToBeTrue2} which is expected to be false returns {result2}");
-			Console.WriteLine($"The Word {expectedToBeTrue3} which is expected to be false returns {result3}");
+			Console.WriteLine($"The Word {expectedToBeTrue2} which is expected to be True returns {result2}");
+			Console.WriteLine($"The Word {expectedToBeTrue3} which is expected to be True returns {result3}");
 		}
 	}
 }

@@ -79,5 +79,25 @@ namespace BloomFilter.Tests
 			Assert.IsTrue(expectedHashCode2 > 0);
 			Assert.IsTrue(expectedHashCode3 > 0);
 		}
+
+		[TestMethod]
+		public void ExpectedCalculateSecondMD5Hash_ReturnsANumberGreaterThan0_IsTrue()
+		{
+			//Arrange
+			const string testWord = "abcdefg";
+			const string testWord2 = "hijklmno";
+			const string testWord3 = "pqrstuvwxyz";
+			var bloomFilter = new BloomFilter();
+
+			//Act
+			var expectedHashCode = bloomFilter.CalculateSecondHash(testWord);
+			var expectedHashCode2 = bloomFilter.CalculateSecondHash(testWord2);
+			var expectedHashCode3 = bloomFilter.CalculateSecondHash(testWord3);
+
+			//Assert
+			Assert.IsTrue(expectedHashCode > 0);
+			Assert.IsTrue(expectedHashCode2 > 0);
+			Assert.IsTrue(expectedHashCode3 > 0);
+		}
 	}
 }
