@@ -26,10 +26,10 @@ namespace BloomFilter
 			return Math.Abs(input.GetHashCode()) % _bloomSize;
 		}
 
-		public int CalculateSecondHash(string input)
+		public int CalculateSecondHash(string word)
 		{
 			MD5 md5 = MD5.Create();
-			byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+			byte[] inputBytes = Encoding.ASCII.GetBytes(word);
 			byte[] hash = md5.ComputeHash(inputBytes);
 			int totalHashValue = 0;
 
@@ -42,21 +42,35 @@ namespace BloomFilter
 			return totalHashValue;
 		}
 
+		public int CalculateThirdHash(string word)
+		{
+			int charValues = 0;
+			foreach (char letter in word)
+			{
+				charValues += letter;
+			}
+
+			return charValues * 6;
+		}
+
 		public void SetValueInBloomFilter(string word)
 		{
 			var hashValue = CalculateHash(word);
 			var secondHashValue = CalculateSecondHash(word);
+			var thirdHashValue = CalculateThirdHash(word);
 
 			_bitArray[hashValue] = true;
 			_bitArray[secondHashValue] = true;
+			_bitArray[thirdHashValue] = true;
 		}
 
 		public bool SearchValueInBloomFilter(string word)
 		{
 			var hashValue = CalculateHash(word);
 			var secondHashValue = CalculateSecondHash(word);
+			var thirdHashValue = CalculateThirdHash(word);
 
-			if (_bitArray[hashValue] && _bitArray[secondHashValue])
+			if (_bitArray[hashValue] && _bitArray[secondHashValue] && _bitArray[thirdHashValue])
 			{
 				return true;
 			}
