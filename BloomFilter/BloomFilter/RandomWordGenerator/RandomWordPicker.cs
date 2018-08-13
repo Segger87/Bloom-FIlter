@@ -12,7 +12,7 @@ namespace BloomFilter
 		{
 			"Sammmmmmmmmmmmm",
 			"Barryyyyyyyy",
-			"Garyyyyy",
+			"Garyyyyyy1",
 			"Larryyyyyyyyy",
 			"Harryyyyyyyy",
 			"Carriesss",
@@ -20,7 +20,8 @@ namespace BloomFilter
 			"FooBarBro",
 			"Shaq Fu",
 			"Fu Schnickens",
-			"Hong Kong Fuey"
+			"Hong Kong Fuey",
+			"Shenmue"
 		};
 
 		private string[] WordsInTheFilter =
@@ -35,12 +36,13 @@ namespace BloomFilter
 			"zanthoxyl",
 			"yocked",
 			"yocking",
-			"yodling"
+			"yodling",
+			"dynasty"
 		};
 
 		public RandomWordPicker()
 		{
-			GenerateRandomNumber(WordsInTheFilter);
+			GenerateRandomNumber(WordsNotInTheFilter);
 		}
 
 		private void GenerateRandomNumber(string[] words)
