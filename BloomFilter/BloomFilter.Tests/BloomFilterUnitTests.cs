@@ -35,7 +35,7 @@ namespace BloomFilter.Tests
 		[TestMethod]
 		public void BloomFilterSearchMethod_DoesntFindExpectedWord_IsUsuallyFalse()
 		{
-			//I use the term usually false as there is always a change of a false positive
+			//I use the term usually false as there is always a chance of a false positive
 			//Arrange
 			const string expectedWord1 = "BeastModeBarry";
 			const string expectedWord2 = "BarryModeBeast";
