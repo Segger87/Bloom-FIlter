@@ -22,7 +22,6 @@ namespace BloomFilter
 
 		public int CalculateHash(string input)
 		{
-			//Math.Absolute always returns positive number
 			//I used modulus to keep the range low (otherwise it was returning ints > 1billion)
 			return Math.Abs(input.GetHashCode()) % _bloomSize;
 		}

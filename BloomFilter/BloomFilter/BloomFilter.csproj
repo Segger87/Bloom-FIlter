@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BloomFilter\BloomFilter.cs" />
-    <Compile Include="DownloadWords\DownloadWords.cs" />
+    <Compile Include="WordDownloader\WordDownloader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

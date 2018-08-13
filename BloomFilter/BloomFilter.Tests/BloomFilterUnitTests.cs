@@ -15,7 +15,7 @@ namespace BloomFilter.Tests
 			const string expectedWord4 = "maw's";
 			const string expectedWord5 = "liquidizer's";
 
-			var listOfWords = new DownloadWords();
+			var listOfWords = new WordDownloader();
 			var bloomFilter = new BloomFilter();
 
 			//Act
@@ -43,7 +43,7 @@ namespace BloomFilter.Tests
 			const string expectedWord4 = "ModeBarryBeast";
 			const string expectedWord5 = "BeastBarryMode";
 
-			var listOfWords = new DownloadWords();
+			var listOfWords = new WordDownloader();
 			var bloomFilter = new BloomFilter();
 
 			//Act

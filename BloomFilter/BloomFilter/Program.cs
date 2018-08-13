@@ -12,7 +12,7 @@ namespace BloomFilter
 		private void ExecuteBloomFilter()
 		{
 			Console.WriteLine("Downloading Words...");
-			var listOfWords = new DownloadWords();
+			var listOfWords = new WordDownloader();
 			var bloomFilter = new BloomFilter();
 			Console.WriteLine("Searching Words...");
 
