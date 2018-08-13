@@ -45,6 +45,7 @@ namespace BloomFilter
 		public int CalculateThirdHash(string word)
 		{
 			int charValues = 0;
+
 			foreach (char letter in word)
 			{
 				charValues += letter;

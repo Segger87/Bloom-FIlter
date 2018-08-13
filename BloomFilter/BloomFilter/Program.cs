@@ -28,23 +28,23 @@ namespace BloomFilter
 
 		private void RandomSearchesExpectedToBeFalse(BloomFilter bloomFilter)
 		{
-			var rand = new RandomWordPicker();
+			var randomWord = new RandomWordPicker();
 
-			foreach (var r in rand.RandomWordThatShouldBeFalse)
+			foreach (var random in randomWord.RandomWordThatShouldBeFalse)
 			{
-				var result = bloomFilter.SearchValueInBloomFilter(r);
-				Console.WriteLine($"The Word {r} which is expected to be False returns {result}");
+				var result = bloomFilter.SearchValueInBloomFilter(random);
+				Console.WriteLine($"The Word {random} which is expected to be False returns {result}");
 			}
 		}
 
 		private void RandomSearchesExpectedToBeTrue(BloomFilter bloomFilter)
 		{
-			var rand = new RandomWordPicker();
+			var randomWord = new RandomWordPicker();
 
-			foreach (var r in rand.RandomWordThatShouldBeTrue)
+			foreach (var random in randomWord.RandomWordThatShouldBeTrue)
 			{
-				var result = bloomFilter.SearchValueInBloomFilter(r);
-				Console.WriteLine($"The Word {r} which is expected to be True returns {result}");
+				var result = bloomFilter.SearchValueInBloomFilter(random);
+				Console.WriteLine($"The Word {random} which is expected to be True returns {result}");
 			}
 		}
 	}
