@@ -5,8 +5,8 @@ namespace BloomFilter
 {
 	public class RandomWordPicker
 	{
-		public List<string> RandomWordThatShouldBeFalse = new List<string>();
-		public List<string> RandomWordThatShouldBeTrue = new List<string>();
+		public List<string> RandomWordThatIsFalse = new List<string>();
+		public List<string> RandomWordThatIsTrue = new List<string>();
 
 		private string[] WordsNotInTheFilter =
 		{
@@ -42,31 +42,31 @@ namespace BloomFilter
 
 		public RandomWordPicker()
 		{
-			GenerateRandomNumber(WordsNotInTheFilter);
+			RandomNumber(WordsNotInTheFilter);
 		}
 
-		private void GenerateRandomNumber(string[] words)
+		private void RandomNumber(string[] words)
 		{
 			var random = new Random();
 
 			for (int i = 0; i < 10; i++)
 			{
 				var rndNum = random.Next(0, words.Length);
-				ProduceARandomWordThatShouldBeFalse(rndNum);
-				ProduceARandomWordThatShouldBeTrue(rndNum);
+				RandomWordThatShouldBeFalse(rndNum);
+				RandomWordThatShouldBeTrue(rndNum);
 			}
 		}
 
-		private void ProduceARandomWordThatShouldBeFalse(int number)
+		private void RandomWordThatShouldBeFalse(int number)
 		{
 			var randomWord = WordsNotInTheFilter[number];
-			RandomWordThatShouldBeFalse.Add(randomWord);
+			RandomWordThatIsFalse.Add(randomWord);
 		}
 
-		private void ProduceARandomWordThatShouldBeTrue(int number)
+		private void RandomWordThatShouldBeTrue(int number)
 		{
 			var randomWord = WordsInTheFilter[number];
-			RandomWordThatShouldBeTrue.Add(randomWord);
+			RandomWordThatIsTrue.Add(randomWord);
 		}
 	}
 }

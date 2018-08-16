@@ -108,8 +108,8 @@ namespace BloomFilter.Tests
 			const int actual = 10;
 
 			//Act
-			var expected = randomWord.RandomWordThatShouldBeFalse;
-			var expected2 = randomWord.RandomWordThatShouldBeFalse;
+			var expected = randomWord.RandomWordThatIsFalse;
+			var expected2 = randomWord.RandomWordThatIsFalse;
 
 			//Assert
 			Assert.AreEqual(expected.Count, actual);

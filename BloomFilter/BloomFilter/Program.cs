@@ -30,7 +30,7 @@ namespace BloomFilter
 		{
 			var randomWord = new RandomWordPicker();
 
-			foreach (var random in randomWord.RandomWordThatShouldBeFalse)
+			foreach (var random in randomWord.RandomWordThatIsFalse)
 			{
 				var result = bloomFilter.SearchValueInBloomFilter(random);
 				Console.WriteLine($"The Word {random} which is expected to be False returns {result}");
@@ -41,7 +41,7 @@ namespace BloomFilter
 		{
 			var randomWord = new RandomWordPicker();
 
-			foreach (var random in randomWord.RandomWordThatShouldBeTrue)
+			foreach (var random in randomWord.RandomWordThatIsTrue)
 			{
 				var result = bloomFilter.SearchValueInBloomFilter(random);
 				Console.WriteLine($"The Word {random} which is expected to be True returns {result}");
